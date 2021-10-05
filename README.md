@@ -9,6 +9,8 @@
 
 > It's a simple solution to get text from images using [tesseract.js](https://github.com/naptha/tesseract.js)
 
+### If you don't want to clone the repo you can test it [here](https://get-image-text.netlify.app/)
+
 ## 💻 System Requirements
 
 * Mostly recent version of `yarn or node`
