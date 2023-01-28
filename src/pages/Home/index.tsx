@@ -22,11 +22,12 @@ export const Home = () => {
     setLoading(true);
 
     await worker.load();
-    await worker.loadLanguage('por');
-    await worker.initialize('por');
+    await worker.loadLanguage('eng');
+    await worker.initialize('eng');
     const { data: { text } } = await worker.recognize(imageToDisplay);
     setImageText(text);
     setLoading(false);
+    await worker.terminate();
   };
 
   useEffect(() => {
@@ -42,13 +43,13 @@ export const Home = () => {
       <Content>
         <Image 
           src={imageToDisplay ? imageToDisplay : svgdraw} 
-          alt={imageToDisplay ? 'Menina com seus arquivos' : 'Imagem escolhida'} 
+          alt={imageToDisplay ? 'Girl with her files' : 'Choose Image'} 
         />
 
         <ActionsWrapper>
           <UploadButton setImageToDisplay={setImageToDisplay}/>
 
-          <textarea readOnly placeholder='Envie uma imagem para ler seu texto!' value={imageText} />
+          <textarea readOnly placeholder='Upload an image to read your text!' value={imageText} />
 
           {loading && (
             <LoadingWrapper>

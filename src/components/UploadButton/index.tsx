@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from 'react';
 
 import { Wrapper, FileInput, FileName } from './styles';
 
@@ -7,12 +7,12 @@ type uploadButtonProps = {
 };
 
 export function UploadButton({ setImageToDisplay }: uploadButtonProps) {
-  const [fileName, setFileName] = useState('Nenhum arquivo selecionado')
+  const [fileName, setFileName] = useState('No file Selected');
 
   function handleSelectedFile(files: FileList) {
-    if(!files) {
-      alert('Arquivo não selecionado');
-    };
+    if (!files) {
+      alert('File not selected');
+    }
 
     const file = files[0];
     const fileUrl = window.URL.createObjectURL(file);
@@ -21,21 +21,17 @@ export function UploadButton({ setImageToDisplay }: uploadButtonProps) {
     setImageToDisplay(fileUrl);
   }
 
-  return(
+  return (
     <Wrapper>
       <FileInput>
-        Escolher Arquivo
-        <input 
-          type="file" 
-          onChange={
-            (e) => handleSelectedFile(
-              e.target.files as FileList
-            )
-          }
+        Choose File{' '}
+        <input
+          type="file"
+          onChange={e => handleSelectedFile(e.target.files as FileList)}
         />
       </FileInput>
 
       <FileName>{fileName}</FileName>
     </Wrapper>
-  )
+  );
 }
